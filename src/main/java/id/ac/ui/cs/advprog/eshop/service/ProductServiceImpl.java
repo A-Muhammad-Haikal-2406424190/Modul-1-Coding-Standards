@@ -5,9 +5,7 @@ import id.ac.ui.cs.advprog.eshop.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Iterator;
+import java.util.*;
 import java.util.List;
 
 @Service
@@ -27,5 +25,9 @@ public class ProductServiceImpl implements ProductService {
         List<Product> allProduct = new ArrayList<>();
         productIterator.forEachRemaining(allProduct::add);
         return allProduct;
+    }
+    @Override
+    public Optional<Product> findById(String id) {
+        return productRepository.findById(id);
     }
 }

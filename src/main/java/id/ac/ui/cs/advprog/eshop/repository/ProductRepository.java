@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
@@ -22,5 +24,9 @@ public class ProductRepository {
 
     public Iterator<Product> findAll() {
         return productData.iterator();
+    }
+
+    public Optional<Product> findById(String id){
+        return productData.stream().filter(product -> id.equals(product.getProductId())).findFirst();
     }
 }
