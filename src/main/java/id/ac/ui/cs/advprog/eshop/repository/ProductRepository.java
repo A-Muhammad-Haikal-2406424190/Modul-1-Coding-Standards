@@ -9,8 +9,13 @@ import java.util.List;
 @Repository
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
+    private int globalIndex = 1;
 
     public Product create(Product product) {
+        if (product.getProductId() == null){
+            product.setProductId(Integer.toString((globalIndex)));
+            globalIndex++;
+        }
         productData.add(product);
         return product;
     }
