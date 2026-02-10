@@ -30,10 +30,17 @@ public class ProductController {
         return "redirect:list";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editProductPage(Model model){
+        Product product = new Product();
+        model.addAttribute("product", product);
+        return "editProduct";
+    }
+
     @PostMapping("/edit")
     public String editProduct(@ModelAttribute Product product){
         service.edit(product);
-        return "redirect:list"
+        return "redirect:list";
     }
 
     @GetMapping("/list")
