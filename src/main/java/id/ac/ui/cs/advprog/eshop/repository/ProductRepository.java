@@ -40,4 +40,8 @@ public class ProductRepository {
     public Optional<Product> findById(String id){
         return productData.stream().filter(product -> id.equals(product.getProductId())).findFirst();
     }
+
+    public void delete(String id) {
+        productData.removeIf(product -> product.getProductId().equals(id));
+    }
 }
